@@ -6,8 +6,8 @@
             @foreach($posts as $post)
             <!-- defini rota postshow depois -->
             <a href="" class="bg-white shadow rounded-lg overflow-hidden hover:shadow-lg transition">
-                @if ($post->cover_image)
-                <img src="{{ asset('storage/' . $post->cover_image) }}" class="w-full h-48 object-cover">
+                @if ($post->image)
+                <img src="{{ asset('storage/' . $post->image) }}" class="w-full h-48 object-cover">
                 @endif
                 <div class="p-4">
                     <h2 class="text-xl font-semibold">{{ $post->title }}</h2>
