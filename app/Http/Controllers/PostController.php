@@ -51,9 +51,9 @@ class PostController extends Controller
 
     public function show($id)
     {
-        if(!$posts = $this -> post -> find($id))
+        if(!$post = $this -> post -> find($id))
             abort(404);
 
-        return view ('posts.show', compact('posts'));
+        return view ('posts.show', compact('post'));
     }
 }
