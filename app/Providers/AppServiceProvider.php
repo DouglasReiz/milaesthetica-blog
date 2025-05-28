@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Post;
+use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,5 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->share('posts', Post::all());
+        view()->share('logo', Setting::first());
+        view()->share('icon', optional(Setting::first())->icon_path);
     }
 }

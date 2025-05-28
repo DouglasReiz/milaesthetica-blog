@@ -48,4 +48,12 @@ class PostController extends Controller
 
         return redirect()->route('posts.index');
     }
+
+    public function show($id)
+    {
+        if(!$posts = $this -> post -> find($id))
+            abort(404);
+
+        return view ('posts.show', compact('posts'));
+    }
 }
