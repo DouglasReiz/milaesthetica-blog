@@ -23,6 +23,5 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->share('posts', Post::all());
         view()->share('logo', Setting::first());
-        view()->share('icon', optional(Setting::first())->icon_path);
     }
 }

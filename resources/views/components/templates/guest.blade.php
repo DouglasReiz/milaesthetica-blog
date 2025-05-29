@@ -24,7 +24,7 @@
 
     <section class="container mx-auto px-4 py-8">
         <div class="bg-white rounded-xl overflow-hidden shadow-md ">
-            <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
+            <div class="">
                 <div class="font-sans text-gray-900 antialiased">
                     {{ $slot }}
                 </div>
