@@ -40,7 +40,9 @@
                         @endif
 
                         {{-- Título --}}
-                        <a href="{{ route('posts.show', $post->id) }}"><h1 class="text-4xl font-bold mb-4 leading-tight">{{ $post->title }}</h1></a>
+                        <a href="{{ route('posts.show', $post->id) }}">
+                            <h1 class="text-4xl font-bold mb-4 leading-tight">{{ $post->title }}</h1>
+                        </a>
 
 
 
@@ -53,7 +55,37 @@
                         <div class="prose prose-lg max-w-none">
                             {!! $post->content !!}
                         </div>
+
+                        <section class="mt-12 border-t border-gray-400">
+                            <h2 class="text-xl font-semibold mb-4">Deixe um comentário</h2>
+
+                            @if(session('success'))
+                            <p class="text-green-600 mb-4">{{ session('success') }}</p>
+                            @endif
+
+                            <form action="{{ route('comments.store', $post->id) }}" method="POST" class="space-y-4">
+                                @csrf
+                                <input type="text" name="name" placeholder="Seu nome" required class="w-full border p-2 rounded" />
+                                <textarea name="comment" placeholder="Seu comentário" required class="w-full border p-2 rounded"></textarea>
+                                <button type="submit" class="bg-amber-600 text-white px-4 py-2 rounded">Comentar</button>
+                            </form>
+                        </section>
+
+                        <section class="mt-8 bg-gray-100 p-2 rounded-md">
+                            <h2 class="text-lg font-semibold mb-2">Comentários</h2>
+
+                            @forelse ($post->comments as $comment)
+                            <div class="border-t border-gray-400 pt-4 mb-4">
+                                <p class="font-semibold">{{ $comment->name }}</p>
+                                <p class="text-gray-600">{{ $comment->comment }}</p>
+                            </div>
+                            @empty
+                            <p>Seja o primeiro a comentar!</p>
+                            @endforelse
+                        </section>
                     </article>
+
+
                 </div>
                 @endforeach
             </div>
