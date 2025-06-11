@@ -10,6 +10,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::view('dashboard', 'dashboard')
+    ->middleware(['auth'])
     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
@@ -31,4 +32,6 @@ Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update
 //Route comment
 Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';
