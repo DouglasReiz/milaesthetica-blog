@@ -27,22 +27,33 @@
 
         <div class="max-w-6xl mx-auto">
 
-            <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-10">
+            <div class="">
                 @foreach ($posts as $post)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden group transition-transform duration-300 hover:-translate-y-1">
-                    <a href="{{ route('posts.show', $post->id) }}">
-                        <div class="relative">
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#f4f0e5]/80 via-transparent to-transparent pointer-events-none"></div>
+                <div class="bg-white shadow-md overflow-hidden">
+                    <article class="max-w-4xl mx-auto px-4 py-16 text-gray-900">
+
+                        {{-- Capa do Post --}}
+                        @if($post->image)
+                        <div class="mb-10">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-auto rounded-md shadow-lg">
                         </div>
-                        <div class="p-5">
-                            <h2 class="text-xl font-semibold text-gray-800 group-hover:text-[#c9a57d] transition-colors duration-300">
-                                {{ $post->title }}
-                            </h2>
-                            <p class="mt-2 text-sm text-gray-600">{{ $post->excerpt }}</p>
-                            <p class="mt-4 text-xs text-gray-400">{{ $post->created_at->format('d/m/Y') }}</p>
+                        @endif
+
+                        {{-- Título --}}
+                        <a href="{{ route('posts.show', $post->id) }}"><h1 class="text-4xl font-bold mb-4 leading-tight">{{ $post->title }}</h1></a>
+
+
+
+                        {{-- Autor e Data --}}
+                        <div class="mb-10 text-sm text-gray-500">
+                            Publicado em {{ $post->created_at->format('d/m/Y') }}
                         </div>
-                    </a>
+
+                        {{-- Conteúdo do Post --}}
+                        <div class="prose prose-lg max-w-none">
+                            {!! $post->content !!}
+                        </div>
+                    </article>
                 </div>
                 @endforeach
             </div>

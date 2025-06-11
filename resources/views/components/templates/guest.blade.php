@@ -23,7 +23,7 @@
     </section>
 
     <section class="container mx-auto px-4 py-8">
-        <div class="bg-white rounded-xl overflow-hidden shadow-md ">
+        <div class="rounded-xl overflow-hidden">
             <div class="">
                 <div class="font-sans text-gray-900 antialiased">
                     {{ $slot }}
