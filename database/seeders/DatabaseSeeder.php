@@ -22,11 +22,11 @@ class DatabaseSeeder extends Seeder
         //    'email' => 'test@example.com',
         //]);
 
-        //Post::factory()->count(10)->create();
+        Post::factory()->count(10)->create();
 
-        Setting::create([
-            'logo_path' => 'storage/milaesthetica.png',
-            'icon_path' => 'newIcon.png'
-        ]);
+        // Setting::create([
+        //     'logo_path' => 'storage/milaesthetica.png',
+        //     'icon_path' => 'newIcon.png'
+        // ]);
     }
 }

@@ -28,6 +28,9 @@
         <div class="max-w-6xl mx-auto">
 
             <div class="">
+                @if(session('success'))
+                <p class="text-green-600 mb-4">{{ session('success') }}</p>
+                @endif
                 @foreach ($posts as $post)
                 <div class="bg-white shadow-md overflow-hidden">
                     <article class="max-w-4xl mx-auto px-4 py-16 text-gray-900">
@@ -58,10 +61,6 @@
 
                         <section class="mt-12 border-t border-gray-400">
                             <h2 class="text-xl font-semibold mb-4">Deixe um comentário</h2>
-
-                            @if(session('success'))
-                            <p class="text-green-600 mb-4">{{ session('success') }}</p>
-                            @endif
 
                             <form action="{{ route('comments.store', $post->id) }}" method="POST" class="space-y-4">
                                 @csrf
